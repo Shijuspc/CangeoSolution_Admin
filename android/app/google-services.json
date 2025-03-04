@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "243025286408",
+    "project_id": "cangeosolutions-501c2",
+    "storage_bucket": "cangeosolutions-501c2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243025286408:android:3c8a0b1b974fda668048bd",
+        "android_client_info": {
+          "package_name": "com.cangeosolutions.adminplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASiRDc8Oo1kaV6gU5bbZCbRvQjjH9-Rhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243025286408:android:82b1c1aad2adbba78048bd",
+        "android_client_info": {
+          "package_name": "com.cangeosolutions.videoplayer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASiRDc8Oo1kaV6gU5bbZCbRvQjjH9-Rhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
