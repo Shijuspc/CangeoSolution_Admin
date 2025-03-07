@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (!controller.fileIds.contains(selectedValue) &&
                   selectedValue != "none" &&
                   selectedValue != "No Video") {
-                selectedValue = "none"; // Fallback if value is invalid
+                selectedValue = "none";
               }
 
               return Container(
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 10,
         ),
         Obx(() {
-          if (controller.isLoading.value) // Overlay the loading screen
+          if (controller.isLoading.value)
             Positioned.fill(
               child: Container(
                 color: Colors.white.withOpacity(0.8),
@@ -324,20 +324,32 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Row(
                               children: [
                                 Expanded(
-                                    child: _buildMediaWithActions(
-                                        context, controller.files[0], 0)),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        child: _buildMediaWithActions(
+                                            context, controller.files[0], 0,
+                                            isFullWidth: true),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 SizedBox(width: 10),
                                 Expanded(
-                                    child: _buildMediaWithActions(
-                                        context, controller.files[1], 1)),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                          child: _buildMediaWithActions(
+                                              context, controller.files[1], 1)),
+                                      SizedBox(width: 10),
+                                      Expanded(
+                                          child: _buildMediaWithActions(
+                                              context, controller.files[2], 2)),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                          SizedBox(height: 10),
-                          Expanded(
-                            child: _buildMediaWithActions(
-                                context, controller.files[2], 2,
-                                isFullWidth: true),
                           ),
                         ],
                         if (count == 4) ...[
@@ -693,7 +705,7 @@ class _BottomBarSettingsState extends State<BottomBarSettings> {
   }
 
   Future<void> _loadBottomBarData(String fileId) async {
-    if (fileId.isEmpty || fileId == "none") return;
+    if (fileId.isEmpty || fileId == "none" || fileId == "No Video") return;
 
     DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
         .instance
@@ -715,7 +727,7 @@ class _BottomBarSettingsState extends State<BottomBarSettings> {
   }
 
   Future<void> _saveBottomBarData(String fileId) async {
-    if (fileId.isEmpty || fileId == "none") return;
+    if (fileId.isEmpty || fileId == "none" || fileId == "No Video") return;
 
     await FirebaseFirestore.instance.collection('uploadfiles').doc(fileId).set({
       'bottombar': {
@@ -813,7 +825,7 @@ class _BottomBarSettingsState extends State<BottomBarSettings> {
                           hintText: 'Enter text here',
                           hintStyle: TextStyle(
                             fontSize: 20,
-                            color: Colors.black,
+                            color: const Color.fromARGB(255, 164, 155, 155),
                             fontWeight: FontWeight.w600,
                           )),
                     ),
